@@ -55,9 +55,8 @@
 					}
 				?>
             </select><?php */?>
-            
-              <select id="Department_Code" class="field select full" name="Department_Code" >
-             <option value="">Please select</option>
+            <select id="Department_Code" class="field select full" name="Department_Code" >
+              <option value="">Please select</option>
               <?php		
 			  $this->load->model(array('PurchaseOrder/DepartmentModel','PurchaseOrder/DepartmentService','UserService','UserModel'));
 			  
@@ -75,8 +74,8 @@
 				 
 				$depatModelRetrieved = $departmentService->retriveGivenDepartmentDetails($deptModel);
 			?>
-             <option value="<?php echo $depatModelRetrieved->getDepartmentCode(); ?>"><?php echo $depatModelRetrieved->getDepartmentName(); ?></option>
-            <?php
+              <option value="<?php echo $depatModelRetrieved->getDepartmentCode(); ?>"><?php echo $depatModelRetrieved->getDepartmentName(); ?></option>
+              <?php
 				}
 				else{
 					
@@ -85,15 +84,12 @@
 						
 						
 					?>
-                   
               <option value="<?php echo $departmentData[$index]->getDepartmentCode(); ?>" ><?php echo $departmentData[$index]->getDepartmentName(); ?></option>
-              
               <?php
 					}//for
 				}//else -- administrative user
 				?>
             </select>
-            
           </div></td>
         <td colspan="1" style="padding: 5px 5px 5px 0;"><b>Requested By *</b></td>
         <td colspan="3" style="padding: 5px 5px 5px 0;"><?php 
@@ -121,14 +117,13 @@
 							}//for
 						}//else
 						?>
-          </select>
-       </td>
+          </select></td>
       </tr>
       <tr>
         <td colspan="1" style="padding: 5px 5px 5px 0;"><b>Payment Type *</b></td>
         <td colspan="3" style="padding: 5px 5px 5px 0;"><select id="payment_type" class="field select full" name="payment_type" >
             <option value="">- - Select Payment Type- - </option>
-                               <?php
+            <?php
                                     foreach ($paymentTypeObjectArray as $paymentTypeModel)
                                     {
                                    ?>
@@ -136,9 +131,7 @@
             <?php
                                     }
                                 ?>
-                                                
-          </select>
-</td>
+          </select></td>
         <td style="padding: 5px 5px 5px 0;"><b>Currency *</b></td>
         <td style="padding: 5px 5px 5px 0;"><select id="currrency_selector" class="field select full" name="currrency_selector" onchange="select_conversion_rate();">
             <option value="">- - Select - -</option>
@@ -152,11 +145,9 @@
                                 ?>
           </select></td>
         <td style="padding: 5px 5px 5px 0;"><b>Conversion Rate *</b></td>
-        <td style="padding: 5px 5px 5px 0;">
-        <div>
-        <input type="text" id="conversion_rate" class="field text full" name="conversion_rate" />
-        </div>
-        </td>
+        <td style="padding: 5px 5px 5px 0;"><div>
+            <input type="text" id="conversion_rate" class="field text full" name="conversion_rate" />
+          </div></td>
       </tr>
       <tr>
         <td colspan="1" style="padding: 5px 5px 5px 0;"><b>Payment Remarks</b></td>
@@ -171,13 +162,13 @@
           <textarea id="po_remarks" class="field text full" name="po_remarks" rows="2"></textarea></td>
       </tr>
       <tr>
-        <td colspan="8"><!--                            <span class="cont tooltip ui-corner-all" title="Click here to add an Item">
+        <td colspan="8"><!--                           <span class="cont tooltip ui-corner-all" title="Click here to add an Item">
                                 <a id="lnk_add_item" class="btn ui-state-default ui-corner-all" href="#">
                                     <span class="ui-icon ui-icon-newwin"></span>
                                     Add Item
                                 </a>
                             </span>-->
-<!--                                                                  <span class="cont tooltip ui-corner-all" title="Click here to add an Item">
+          <!--                                                                  <span class="cont tooltip ui-corner-all" title="Click here to add an Item">
                                 <a id="lnk_add_item" class="btn ui-state-default ui-corner-all" href="#" name="lnk_add_item">
                                    <span class="ui-icon ui-icon-newwin"></span>
                                     Add Item
@@ -185,40 +176,26 @@
                             </span>-->
           <span class="cont tooltip ui-corner-all" title="Click here to add an Item">
           <input type="button" value="Add Item"  id="lnk_add_item" name="lnk_add_item" class="btn ui-state-default ui-corner-all"  onclick="addNewItemDialog()"  />
-          </span>
-          
-          <br/><br/>
-                   <span class="cont tooltip ui-corner-all" title="Click here to add an Item">
-        <input type="submit" value="Save"  id="po_save" name="po_save" class="btn ui-state-default ui-corner-all" />
-          </span>
-          
+          </span> <br/>
+          <br/>
           <span class="cont tooltip ui-corner-all" title="Click here to add an Item">
+          <input type="submit" value="Save"  id="po_save" name="po_save" class="btn ui-state-default ui-corner-all" />
+          </span> <span class="cont tooltip ui-corner-all" title="Click here to add an Item">
           <input type="button" value="Send For Approval"  id="Approve" name="Approve" class="btn ui-state-default ui-corner-all" onclick="sendForApprvalByEmployee()" />
           </span>
-          
           <!-- <button class="ui-state-default ui-corner-all float-left ui-button" type="submit" disabled="disabled">Save</button> -->
-<!--          <span class="cont tooltip ui-corner-all" title="Click here to update an Item"> <a id="lnk_update_item" class="btn ui-state-default ui-corner-all" href="#"> <span class="ui-icon ui-icon-newwin"></span> Update Item </a> 
+          <!--          <span class="cont tooltip ui-corner-all" title="Click here to update an Item"> <a id="lnk_update_item" class="btn ui-state-default ui-corner-all" href="#"> <span class="ui-icon ui-icon-newwin"></span> Update Item </a> 
 </span>-->
-
-
           <div id="add_new_po_msg">
-           <input type="text" id="required_fields" name="required_fields" value="false">
-           <input type="text" id="po_request_id" name="po_request_id" value=""  />
-           <input type="text" id="expected_date_validity" name="expexted_date_validity" value="true"  />
-           <input type="text" id="supplier_id" name="supplier_id" value="" />
-           
-
+            <input type="hidden" id="required_fields" name="required_fields" value="false">
+            <input type="hidden" id="po_request_id" name="po_request_id" value=""  />
+            <input type="hidden" id="expected_date_validity" name="expexted_date_validity" value="true"  />
+            <input type="hidden" id="supplier_id" name="supplier_id" value="" />
           </div>
-          <div id="po_request_message">  </div>
-          
-          </td>
+          <div id="po_request_message"> </div></td>
       </tr>
     </table>
-	
-	<div id="addedItemTable">
-	
-	</div>
-	
+    <div id="addedItemTable"> </div>
   </fieldset>
   </form>
   <?php //ordeer item add start ?>
@@ -234,15 +211,14 @@
           <td style="padding: 5px 5px 5px 0;width: 17%"><!-- <input type="text" id="po_item_unit" class="field text full" name="txt_po_item_unit" /> -->
             <select id="po_item_unit" class="field select full" name="po_item_unit">
               <option value=""></option>
-                              <?php
+              <?php
                                     foreach ($UnitArray as $unitModel)
                                     {
                                    ?>
-            <option value="<?php echo $unitModel->getUnit_Code(); ?>"><?php echo $unitModel->getDescription(); ?></option>
-            <?php
+              <option value="<?php echo $unitModel->getUnit_Code(); ?>"><?php echo $unitModel->getDescription(); ?></option>
+              <?php
                                     }
-                                ?>              
-                                
+                                ?>
             </select></td>
           <td style="padding: 5px 5px 5px 0;width: 16%"><b>Unit Price *</b></td>
           <td style="padding: 5px 5px 5px 0;width: 17%"><input type="text" id="po_item_unit_price" class="field text full" name="po_item_unit_price" style="font-weight: bold;text-align: right;" onkeyup="calculate_item_value();" /></td>
@@ -272,20 +248,15 @@
       </table>
       <input  name="purchase_order_id" id="purchase_order_id" type="hidden" value="" />
       <input type="hidden" name="item_id" id="item_id" />
-      
-<!--      <button class="ui-state-default ui-corner-all float-left ui-button" type="button" onclick="add_items_to_po();">Add</button>-->
-<div id="addNewItemMessage" >
-
-</div>
-
+      <!--      <button class="ui-state-default ui-corner-all float-left ui-button" type="button" onclick="add_items_to_po();">Add</button>-->
+      <div id="addNewItemMessage" > </div>
       <button class="ui-state-default ui-corner-all float-left ui-button" type="submit" >Add</button>
-      
     </form>
   </div>
   <?php //order item add ends ?>
   <?php //order item edit start ?>
   <div id="dlg_edit_item" title="Edit Item">
-   <?php /*?> <form>
+    <?php /*?> <form>
       <table style="width: 100%">
         <tr>
           <td style="padding: 5px 5px 5px 0;width: 16%"><b>Item Name *</b></td>
@@ -334,12 +305,8 @@
       </table>
       <button class="ui-state-default ui-corner-all float-left ui-button" type="button" onclick="edit_po_items();">Update</button>
     </form><?php */?>
-    
-    
     <!-- edit start -->
-    
-   
-     <form name="update_purchase_order_item" id="update_purchase_order_item">
+    <form name="update_purchase_order_item" id="update_purchase_order_item">
       <table style="width: 100%">
         <tr>
           <td style="padding: 5px 5px 5px 0;width: 16%"><b>Item Name *</b></td>
@@ -350,15 +317,14 @@
           <td style="padding: 5px 5px 5px 0;width: 17%"><!-- <input type="text" id="po_item_unit" class="field text full" name="txt_po_item_unit" /> -->
             <select id="edit_po_item_unit" class="field select full" name="edit_po_item_unit">
               <option value=""></option>
-                              <?php
+              <?php
                                     foreach ($UnitArray as $unitModel)
                                     {
                                    ?>
-            <option value="<?php echo $unitModel->getUnit_Code(); ?>"><?php echo $unitModel->getDescription(); ?></option>
-            <?php
+              <option value="<?php echo $unitModel->getUnit_Code(); ?>"><?php echo $unitModel->getDescription(); ?></option>
+              <?php
                                     }
-                                ?>              
-                                
+                                ?>
             </select></td>
           <td style="padding: 5px 5px 5px 0;width: 16%"><b>Unit Price *</b></td>
           <td style="padding: 5px 5px 5px 0;width: 17%"><input type="text" id="edit_po_item_unit_price" class="field text full" name="edit_po_item_unit_price" style="font-weight: bold;text-align: right;" onkeyup="calculate_item_value_for_edit();" /></td>
@@ -386,25 +352,15 @@
           <td style="padding: 5px 5px 5px 0;" colspan="5"><textarea id="edit_po_description" class="field text full" name="edit_po_description" rows="2"></textarea></td>
         </tr>
       </table>
-     
-     <?php /*?> updating item<?php */?> <input type="hidden" name="updating_item_id" id="updating_item_id" />
-<?php /*?>     purchase order<?php */?> <input type="hidden" name="updating_po_id" id="updating_po_id" />
-      
-<!--      <button class="ui-state-default ui-corner-all float-left ui-button" type="button" onclick="add_items_to_po();">Add</button>-->
-<div id="editItemMessage" >
-
-</div>
-
+      <?php /*?> updating item<?php */?>
+      <input type="hidden" name="updating_item_id" id="updating_item_id" />
+      <?php /*?>     purchase order<?php */?>
+      <input type="hidden" name="updating_po_id" id="updating_po_id" />
+      <!--      <button class="ui-state-default ui-corner-all float-left ui-button" type="button" onclick="add_items_to_po();">Add</button>-->
+      <div id="editItemMessage" > </div>
       <button class="ui-state-default ui-corner-all float-left ui-button" type="submit" >Update</button>
-      
     </form>
-
-    
-    
-    
     <!--edit ends -->
-    
-    
   </div>
 </div>
 <?php //order item edit ends ?>

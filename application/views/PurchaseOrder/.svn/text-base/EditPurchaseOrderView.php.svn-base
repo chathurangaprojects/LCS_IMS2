@@ -270,15 +270,28 @@
   ?>
   
           
-          
-            <br/><br/>
+    <br/><br/>
             
-          
-          <!-- <button class="ui-state-default ui-corner-all float-left ui-button" type="submit" disabled="disabled">Save</button> -->
-<!--          <span class="cont tooltip ui-corner-all" title="Click here to update an Item"> <a id="lnk_update_item" class="btn ui-state-default ui-corner-all" href="#"> <span class="ui-icon ui-icon-newwin"></span> Update Item </a> 
-</span>-->
+<?php
 
+$userService = new UserService();
 
+$isHODorACD = $userService->isHeadOfDepartmentOrAdministrativeDirector($this->session->userdata('emp_id')); 
+	
+	if($isHODorACD){
+?>
+
+ <div id="po_status_change_text">
+
+          PO request Approve/Reject/Return Remarks
+         <textarea id="status_change_remark" name="status_change_remark" cols="45" rows="4"> </textarea>
+         </div>
+         
+<?php
+	}
+?>
+    
+         
           <div id="add_new_po_msg">
            <input type="text" id="required_fields" name="required_fields" value="false">
            <input type="text" id="po_request_id" name="po_request_id" value="<?php echo $PurchaseOrderID; ?>"  />

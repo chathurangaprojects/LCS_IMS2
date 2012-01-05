@@ -1162,7 +1162,8 @@ echo $message.'#######----#######'.$poItemTableView;
 			 			
 			//HOD has the priviledges to approve the PO request
 			 //echo "approve PO ".$;
-			 	 
+		
+		
 		 $poRequestModel = new PurchaseOrderRequestModel();
 		 
 		 $poRequestService = new PurchaseOrderRequestService();
@@ -1173,12 +1174,14 @@ echo $message.'#######----#######'.$poItemTableView;
 		 
 		 $poModStatus = new PurchaseOrderModerateStatus();
 		 
+		  $status_change_remark=$this->input->post('status_change_remark',TRUE);
+		  
 		  $poModStatus->setOrder_Code($po_request_id);
 		  $poModStatus->setStatus_Code(4);
 		  $poModStatus->setEmployee_Code($this->session->userdata('emp_id'));
-	   	  $poModStatus->setModerated_Date(date("yyyy-mm-dd"));
-		  $poModStatus->setComments('sample comment');
+		  $poModStatus->setComments($status_change_remark);
 
+		 $poRequestService->insertPurchaseOrderUpdatedStatus($poModStatus);
 		 
 		 $isUpdated = $poRequestService->updatePurchaseOrderRequestByHOD($poRequestModel);	 
  	 
@@ -1248,23 +1251,25 @@ echo $message.'#######----#######'.$poItemTableView;
 		 
 		 $poRequestModel->setOrder_Code($po_request_id);
 		 $poRequestModel->setStatus_Code(6);//status 6 - PO approved by ACD
-		 //$poRequestModel->setRequested_Dept($this->session->userdata('department')); 
+
+		 $poModStatus = new PurchaseOrderModerateStatus();
 		 
-		 //$isUpdated = $poRequestService->updatePurchaseOrderRequestByHOD($poRequestModel);
+		  $status_change_remark=$this->input->post('status_change_remark',TRUE);
+		  
+		  $poModStatus->setOrder_Code($po_request_id);
+		  $poModStatus->setStatus_Code(6);
+		  $poModStatus->setEmployee_Code($this->session->userdata('emp_id'));
+		  $poModStatus->setComments($status_change_remark);
+
+		 $poRequestService->insertPurchaseOrderUpdatedStatus($poModStatus);
 		 
 		 $poRequestService->updatePurchaseOrderRequest($poRequestModel);
  	 
-	      //  if($isUpdated){
+
 				
           echo '<div class="response-msg success ui-corner-all">Purchase Order Request was successfully approved by the Administrative Director</div>#######success';
 		  
-			/*}
-			else{
-				
-				          echo '<div class="response-msg error ui-corner-all">You are not Authorized to Approve this Purchase Order request</div>#######error';
-						  
-			}
-			*/
+
 	  
 	     }//hasPriviledges
 			else{
@@ -1320,8 +1325,20 @@ echo $message.'#######----#######'.$poItemTableView;
 		 $poRequestService = new PurchaseOrderRequestService();
 		 
 		 $poRequestModel->setOrder_Code($po_request_id);
-		 $poRequestModel->setStatus_Code(3);//status 3 - PO Canceled by HOD
+		 $poRequestModel->setStatus_Code(3);//status 3 - PO Rejected by HOD
 		 $poRequestModel->setRequested_Dept($this->session->userdata('department')); 
+		 
+		 $poModStatus = new PurchaseOrderModerateStatus();
+		 
+		  $status_change_remark=$this->input->post('status_change_remark',TRUE);
+		  
+		  $poModStatus->setOrder_Code($po_request_id);
+		  $poModStatus->setStatus_Code(3);
+		  $poModStatus->setEmployee_Code($this->session->userdata('emp_id'));
+		  $poModStatus->setComments($status_change_remark);
+
+		 $poRequestService->insertPurchaseOrderUpdatedStatus($poModStatus);
+		 
 		 
 		 $isUpdated = $poRequestService->updatePurchaseOrderRequestByHOD($poRequestModel);	 
  	 
@@ -1388,9 +1405,18 @@ echo $message.'#######----#######'.$poItemTableView;
 		 
 		 $poRequestModel->setOrder_Code($po_request_id);
 		 $poRequestModel->setStatus_Code(7);//status 7 - PO rejected by ACD
-		 //$poRequestModel->setRequested_Dept($this->session->userdata('department')); 
+
+		 $poModStatus = new PurchaseOrderModerateStatus();
 		 
-		 //$isUpdated = $poRequestService->updatePurchaseOrderRequestByHOD($poRequestModel);
+		  $status_change_remark=$this->input->post('status_change_remark',TRUE);
+		  
+		  $poModStatus->setOrder_Code($po_request_id);
+		  $poModStatus->setStatus_Code(7);
+		  $poModStatus->setEmployee_Code($this->session->userdata('emp_id'));
+		  $poModStatus->setComments($status_change_remark);
+
+		 $poRequestService->insertPurchaseOrderUpdatedStatus($poModStatus);
+		 
 		 
 		 $poRequestService->updatePurchaseOrderRequest($poRequestModel);
  	 
@@ -1454,9 +1480,20 @@ echo $message.'#######----#######'.$poItemTableView;
 		 
 		 $poRequestModel->setOrder_Code($po_request_id);
 		 $poRequestModel->setStatus_Code(8);//status 8 - PO returned by ACD
-		 //$poRequestModel->setRequested_Dept($this->session->userdata('department')); 
+
+
+          $poModStatus = new PurchaseOrderModerateStatus();
 		 
-		 //$isUpdated = $poRequestService->updatePurchaseOrderRequestByHOD($poRequestModel);
+		  $status_change_remark=$this->input->post('status_change_remark',TRUE);
+		  
+		  $poModStatus->setOrder_Code($po_request_id);
+		  $poModStatus->setStatus_Code(8);
+		  $poModStatus->setEmployee_Code($this->session->userdata('emp_id'));
+		  $poModStatus->setComments($status_change_remark);
+
+		 $poRequestService->insertPurchaseOrderUpdatedStatus($poModStatus);
+		 
+		 
 		 
 		 $poRequestService->updatePurchaseOrderRequest($poRequestModel);
  	 
@@ -1525,6 +1562,20 @@ echo $message.'#######----#######'.$poItemTableView;
 		 $poRequestModel->setOrder_Code($po_request_id);
 		 $poRequestModel->setStatus_Code(5);//status 5 - PO Returned by HOD
 		 $poRequestModel->setRequested_Dept($this->session->userdata('department')); 
+		 
+		 
+		 
+		 $poModStatus = new PurchaseOrderModerateStatus();
+		 
+		  $status_change_remark=$this->input->post('status_change_remark',TRUE);
+		  
+		  $poModStatus->setOrder_Code($po_request_id);
+		  $poModStatus->setStatus_Code(5);
+		  $poModStatus->setEmployee_Code($this->session->userdata('emp_id'));
+		  $poModStatus->setComments($status_change_remark);
+
+		 $poRequestService->insertPurchaseOrderUpdatedStatus($poModStatus);
+		 
 		 
 		 $isUpdated = $poRequestService->updatePurchaseOrderRequestByHOD($poRequestModel);	 
  	 

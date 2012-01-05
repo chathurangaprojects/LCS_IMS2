@@ -162,7 +162,7 @@
           <textarea id="po_remarks" class="field text full" name="po_remarks" rows="2"></textarea></td>
       </tr>
       <tr>
-        <td colspan="8"><!--                            <span class="cont tooltip ui-corner-all" title="Click here to add an Item">
+        <td colspan="8"><!--                           <span class="cont tooltip ui-corner-all" title="Click here to add an Item">
                                 <a id="lnk_add_item" class="btn ui-state-default ui-corner-all" href="#">
                                     <span class="ui-icon ui-icon-newwin"></span>
                                     Add Item

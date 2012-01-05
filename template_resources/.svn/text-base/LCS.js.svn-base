@@ -1439,10 +1439,12 @@ function approvePOrequestByHOD(){
 
 if(po_request_id!=""){
 	
+	var status_change_remark=$('#status_change_remark').val();
+	
 $.ajax({
         type: "POST",
         url: base_url+'index.php/PurchaseOrder/PurchaseOrderManagement/approvePurchaseOrderbyHOD/'+po_request_id,
-        //data: "pono="+pono,
+        data: "status_change_remark="+status_change_remark,
         success: function(msg)
         {
         // $('#po_request_message').html(msg);
@@ -1460,6 +1462,8 @@ $.ajax({
 	 document.getElementById("po_save").disabled = true;
 	 document.getElementById("Reject").disabled = true;
 	 document.getElementById("Return").disabled = true;
+	 document.getElementById("status_change_remark").disabled=true;
+	 document.getElementById("status_change_remark").disabled=true;
 	  }
 		
       }
@@ -1490,11 +1494,13 @@ function rejectPOrequestByHOD(){
 	var po_request_id = jQuery.trim($('#po_request_id').val());	
 
 if(po_request_id!=""){
-	
+
+var status_change_remark=$('#status_change_remark').val();
+
 $.ajax({
         type: "POST",
         url: base_url+'index.php/PurchaseOrder/PurchaseOrderManagement/rejectPurchaseOrderbyHOD/'+po_request_id,
-        //data: "pono="+pono,
+        data: "status_change_remark="+status_change_remark,
         success: function(msg)
         {
         // $('#po_request_message').html(msg);
@@ -1512,6 +1518,8 @@ $.ajax({
 	 document.getElementById("po_save").disabled = true;
 	 document.getElementById("Reject").disabled = true;
 	 document.getElementById("Return").disabled = true;
+	 document.getElementById("status_change_remark").disabled=true;
+	 
 	  }
 		
       }
@@ -1534,15 +1542,17 @@ function returnPOrequestByHOD(){
 	
 	if(confirmation){
 		
-	
+   	
 	var po_request_id = jQuery.trim($('#po_request_id').val());	
 
 if(po_request_id!=""){
-	
+
+var status_change_remark=$('#status_change_remark').val();
+
 $.ajax({
         type: "POST",
         url: base_url+'index.php/PurchaseOrder/PurchaseOrderManagement/returnPurchaseOrderbyHOD/'+po_request_id,
-        //data: "pono="+pono,
+        data: "status_change_remark="+status_change_remark,
         success: function(msg)
         {
         // $('#po_request_message').html(msg);
@@ -1560,6 +1570,8 @@ $.ajax({
 	 document.getElementById("po_save").disabled = true;
 	 document.getElementById("Reject").disabled = true;
 	 document.getElementById("Return").disabled = true;
+	 document.getElementById("status_change_remark").disabled=true;
+	 
 	  }
 		
       }
@@ -1588,10 +1600,13 @@ function approvePOrequestByACD(){
 
 if(po_request_id!=""){
 	
+	var status_change_remark=$('#status_change_remark').val();
+	
+	
 $.ajax({
         type: "POST",
         url: base_url+'index.php/PurchaseOrder/PurchaseOrderManagement/approvePurchaseOrderbyACD/'+po_request_id,
-        //data: "pono="+pono,
+        data: "status_change_remark="+status_change_remark,
         success: function(msg)
         {
         // $('#po_request_message').html(msg);
@@ -1609,6 +1624,8 @@ $.ajax({
 	 document.getElementById("po_save").disabled = true;
 	 document.getElementById("Reject").disabled = true;
 	 document.getElementById("Return").disabled = true;
+	 document.getElementById("status_change_remark").disabled=true;
+	 
 	  }
 		
       }
@@ -1640,11 +1657,14 @@ function rejectPOrequestByACD(){
 
 if(po_request_id!=""){
 	
+	
+	var status_change_remark=$('#status_change_remark').val();
+	
 $.ajax({
         type: "POST",
         url: base_url+'index.php/PurchaseOrder/PurchaseOrderManagement/rejectPurchaseOrderbyACD/'+po_request_id,
-        //data: "pono="+pono,
-        success: function(msg)
+        data: "status_change_remark="+status_change_remark,
+		success: function(msg)
         {
         // $('#po_request_message').html(msg);
 		
@@ -1661,6 +1681,8 @@ $.ajax({
 	 document.getElementById("po_save").disabled = true;
 	 document.getElementById("Reject").disabled = true;
 	 document.getElementById("Return").disabled = true;
+	 document.getElementById("status_change_remark").disabled=true;
+	 
 	  }
 		
       }
@@ -1688,10 +1710,12 @@ function returnPOrequestByACD(){
 
 if(po_request_id!=""){
 	
+	var status_change_remark=$('#status_change_remark').val();
+	
 $.ajax({
         type: "POST",
         url: base_url+'index.php/PurchaseOrder/PurchaseOrderManagement/returnPurchaseOrderbyACD/'+po_request_id,
-        //data: "pono="+pono,
+        data: "status_change_remark="+status_change_remark,
         success: function(msg)
         {
         // $('#po_request_message').html(msg);
@@ -1709,6 +1733,8 @@ $.ajax({
 	 document.getElementById("po_save").disabled = true;
 	 document.getElementById("Reject").disabled = true;
 	 document.getElementById("Return").disabled = true;
+	 document.getElementById("status_change_remark").disabled=true;
+	 
 	  }
 		
       }

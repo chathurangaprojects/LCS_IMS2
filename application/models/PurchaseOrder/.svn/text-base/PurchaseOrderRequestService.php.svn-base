@@ -539,13 +539,15 @@ else{
  
  
  
- function insertPurchaseOrderUpdatedStatus(){
+ function insertPurchaseOrderUpdatedStatus($purchaseOrderRequestModel){
 	 
 	 
-	 	 $this->db->insert('ta_ims_po_header', $purchaseOrderRequestModel); 
+	 	 $this->db->insert('ta_ims_po_status_update', $purchaseOrderRequestModel); 
 
 	 
  }//function
+ 
+ 
  
  
 }//class
