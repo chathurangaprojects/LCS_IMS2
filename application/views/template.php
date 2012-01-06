@@ -6,7 +6,8 @@
 
 <title>
 <?php
-echo $this->template->getPage_title();
+//echo $this->template->getPage_title();
+echo "LankaCom- Inventory Management System";
 ?>
 </title>
 

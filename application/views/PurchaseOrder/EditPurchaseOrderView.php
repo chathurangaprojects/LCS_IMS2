@@ -279,24 +279,25 @@ $userService = new UserService();
 $isHODorACD = $userService->isHeadOfDepartmentOrAdministrativeDirector($this->session->userdata('emp_id')); 
 	
 	if($isHODorACD){
+	//  PO request Approve/Reject/Return Remarks will be shown only for the ACD or HOD user	
 ?>
 
+   <input id="status_change_remark_checkbox" name="status_change_remark_checkbox" type="checkbox" onclick="if(this.checked){status_change_remark_request('on')}else{ status_change_remark_request('off')} " />PO Request Moderation Remarks 
+        
  <div id="po_status_change_text">
+ <?php //the required html element will be set using jquery ?>
 
-          PO request Approve/Reject/Return Remarks
-         <textarea id="status_change_remark" name="status_change_remark" cols="45" rows="4"> </textarea>
-         </div>
+ </div>
          
 <?php
 	}
 ?>
-    
-         
+           
           <div id="add_new_po_msg">
-           <input type="text" id="required_fields" name="required_fields" value="false">
-           <input type="text" id="po_request_id" name="po_request_id" value="<?php echo $PurchaseOrderID; ?>"  />
-           <input type="text" id="expected_date_validity" name="expexted_date_validity" value="true"  />
-           <input type="text" id="supplier_id" name="supplier_id" value="<?php echo $PurchaseOrderRequestObject->getSupplier_Code(); ?>" />
+           <input type="hidden" id="required_fields" name="required_fields" value="false">
+           <input type="hidden" id="po_request_id" name="po_request_id" value="<?php echo $PurchaseOrderID; ?>"  />
+           <input type="hidden" id="expected_date_validity" name="expexted_date_validity" value="true"  />
+           <input type="hidden" id="supplier_id" name="supplier_id" value="<?php echo $PurchaseOrderRequestObject->getSupplier_Code(); ?>" />
            
 
           </div>

@@ -1746,3 +1746,26 @@ $.ajax({
 	
 }//returnPOrequestByACD
 
+
+
+
+
+
+
+
+
+function status_change_remark_request(value){
+	
+	if(value=='on'){
+		
+ $('#po_status_change_text').html('<b>PO request Approve/Reject/Return Remarks </b><textarea id="status_change_remark" name="status_change_remark" cols="45" rows="4"> </textarea>');
+    
+	}
+	else if(value=='off'){
+		
+	 $('#po_status_change_text').html('');	
+		
+	}
+	
+}//function
+
