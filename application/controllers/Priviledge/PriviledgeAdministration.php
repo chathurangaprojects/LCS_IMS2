@@ -1,36 +1,46 @@
 <?php
-    if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-	class PriviledgeAdministration extends CI_Controller
+class PriviledgeAdministration extends CI_Controller
+{
+    function __construct()
     {
-        function __construct()
+        parent::__construct();
+
+        $this->load->model('UserModel');
+        $this->load->model('UserService');
+        $this->load->model('UserModerationModel');
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->model(array('PurchaseOrder/DepartmentModel','PurchaseOrder/DepartmentService','Priviledge/MasterPriviledgeModel','Priviledge/MasterPriviledgeService','Priviledge/SubPriviledgeModel','Priviledge/SubPriviledgeService','Priviledge/MasterAndSubPriviledgeModel'));
+
+    }//construct
+
+
+
+    function index(){
+
+        echo "Priviledge Administration Controller";
+
+    }//function index
+
+
+
+    function displayChangeLevelPriviledges(){
+
+
+
+
+
+
+    }//displayChangeLevelPriviledges
+
+
+
+    function changeLevelPriviledges(){
+
+        if($this->session->userdata('logged_in'))
         {
-            parent::__construct();
-
-            $this->load->model('UserModel');
-            $this->load->model('UserService');
-            $this->load->model('UserModerationModel');
-            $this->load->helper(array('form', 'url'));
-            $this->load->library('form_validation');
-            $this->load->model(array('PurchaseOrder/DepartmentModel','PurchaseOrder/DepartmentService'));
-
-        }//construct
-
-
-
-        function index(){
-
-            echo "Priviledge Administration Controller";
-
-        }//function index
-
-
-
-
-        function changeLevelPriviledges(){
-
-            if($this->session->userdata('logged_in'))
-            {
 
             $userService = new UserService();
 
@@ -38,11 +48,44 @@
 
             if($isSuperAdmin){
 
-                //user has the priviledges
+                //user has the privileges
+
+
+                //retrieving all Master Privileges
+                $masterPrivilegeService = new MasterPriviledgeService();
+
+                $masterPrivilegeModelArray = $masterPrivilegeService->retrieveAllMasterPriviledges();
+
+
+                $subPrivilegeService = new SubPriviledgeService();
+
+
+                //the following data array will be passed to the view
+                $priviledgeDataArray = array();
+
+
+                //retrieving each sub priviledge under the master priviledge
+                for($index=0;$index<sizeof($masterPrivilegeModelArray);$index++){
+
+                  $subPriviledgeModel= $subPrivilegeService->retrieveSubPrivilegeBasedOnMasterPriviledge($masterPrivilegeModelArray[$index]);
+
+                  $masterAndSubModel = new MasterAndSubPriviledgeModel();
+
+                  $masterAndSubModel->setMasterPriviledge($masterPrivilegeModelArray[$index]);
+                  $masterAndSubModel->setSubPriviledge($subPriviledgeModel);
+
+                  //set up the retrieved data to the array
+
+                    $priviledgeDataArray[$index] = $masterAndSubModel;
+
+                }//for
+
+
+                $data=array('priviledgeDataArray'=>$priviledgeDataArray);
 
                 $this->template->setTitles('', '', 'Level Privileges', 'Assign/Change Privileges');
 
-                $this->template->load('template', 'levelPriviledges');
+                $this->template->load('template', 'levelPriviledges',$data);
 
 
             }
@@ -56,15 +99,13 @@
 
             }
 
-            }//if user logged
-            else{
+        }//if user logged
+        else{
 
-                redirect(base_url().'index.php');
-            }
+            redirect(base_url().'index.php');
+        }
 
-        }//changeLevelPriviledges
-
-
+    }//changeLevelPriviledges
 
 
 
@@ -74,6 +115,6 @@
 
 
 
-    }//class
+}//class
 
 ?>

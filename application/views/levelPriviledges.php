@@ -9,30 +9,96 @@
 
 <div class="content-box">
 
+    <div id="select_level_department">
+
+
+        <b> Select Department </b>
+        <select tabindex="3" class="field select small" id="Department_Code" name="Department_Code" onchange="retrieve_priviledges()">
+            <option value="">Please select</option>
+            <?php
+
+            $this->load->model(array('PurchaseOrder/DepartmentModel','PurchaseOrder/DepartmentService'));
+
+            $departmentService=new DepartmentService();
+
+            $departmentData=$departmentService->retriveAllDepartmentDetails();
+            for($index=0;$index<sizeof($departmentData);$index++){
+                ?>
+                <option value="<?php echo $departmentData[$index]->getDepartmentCode(); ?>"><?php echo $departmentData[$index]->getDepartmentName(); ?></option>
+                <?php
+            }
+            ?>
+        </select>
+
+
+        <br/><br/>
+
+
+
+        <b>Select Level</b>
+        <select tabindex="3" class="field select small" id="Level_Code" name="Level_Code">
+            <option value="">Please select</option>
+            <?php
+
+            $this->load->model('PurchaseOrder/SecurityLevelModelAndService');
+
+            $securityService=new SecurityLevelModelAndService();
+
+            $securityLevelData=$securityService->retriveAllSecurityLevels();
+
+            for($index=0;$index<sizeof($securityLevelData);$index++){
+                ?>
+                <option value="<?php echo $securityLevelData[$index]->getLevelCode(); ?>"><?php echo $securityLevelData[$index]->getDescription(); ?></option>
+                <?php
+            }
+            ?>
+        </select>
+
+
+        <br/><br/>
+
+
+
+    </div>
+
+
     <div id="accordion" class="ui-accordion ui-widget ui-helper-reset ui-accordion-icons" role="tablist">
 
+        <?php
 
-        <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-1">
-            <span class="ui-icon ui-icon-triangle-1-e"></span>
+        for($index=0;$index<sizeof($priviledgeDataArray);$index++){
 
-            <a href="#" tabindex="-1">Section 1</a>
-        </h3>
+            $MasterAndSubPriviledgeModel = $priviledgeDataArray[$index];
 
-        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 69.6px; display: none; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">
-            <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-        </div>
+            $masterPriviledgeModel = $MasterAndSubPriviledgeModel->getMasterPriviledge();
+
+            //$subPriviledgeModel contains an array
+            $subPriviledgeModel =  $MasterAndSubPriviledgeModel->getSubPriviledge();
+
+            ?>
 
 
+            <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-1">
+                <span class="ui-icon ui-icon-triangle-1-e"></span>
 
-        <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-2">
-            <span class="ui-icon ui-icon-triangle-1-e"></span>
+                <a href="#" tabindex="-1"> <?php echo $masterPriviledgeModel->getMaster_Privilege(); ?> </a>
+            </h3>
 
-            <a href="#" tabindex="-2">Section 1</a>
-        </h3>
+            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 300px; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">
 
-        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 69.6px; display: none; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">
-            <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-        </div>
+                <?php
+                //display the sub priviledges
+                for($ind=0;sizeof($subPriviledgeModel)>$ind;$ind++){
+
+                    echo $subPriviledgeModel[$ind]->getPrivilege()."<br/>";
+
+                }
+                ?>
+            </div>
+
+            <?php
+        }//for
+        ?>
 
 
     </div>
