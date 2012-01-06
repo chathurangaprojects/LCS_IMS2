@@ -157,7 +157,7 @@ else if($isAdminDirector){
 
         <ul>
             <li>
-                <a href="<?php echo base_url(); ?>index.php/Priviledge/PriviledgeAdministration/changeLevelPriviledges" class="sf-with-ul">Change Privileges</a>
+                <a href="<?php echo base_url(); ?>index.php/Priviledge/PriviledgeAdministration/displayChangeLevelPriviledges" class="sf-with-ul">Change Privileges</a>
             </li>
 
         </ul>

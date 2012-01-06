@@ -1775,13 +1775,27 @@ function status_change_remark_request(value){
 
 function retrieve_priviledges(){
 
-
-    // $('#accordion').hide();
-
     var departmentCode = $('#Department_Code').val();
     var levelCode = $('#Level_Code').val();
 
 
-    
-        }//retrieve_priviledges
+    if(departmentCode!="" && levelCode!=""){
+
+        //retieving the priviledges
+
+        $.ajax({
+            type: "POST",
+            url: base_url+'index.php/Priviledge/PriviledgeAdministration/departmentLevelPriviledges',
+            data: "departmentCode="+departmentCode+"&levelCode="+levelCode,
+            success: function(msg)
+            {
+                $('#accordion').html(msg);
+
+            }//success
+        });//ajax
+
+
+    }//if
+
+}//retrieve_priviledges
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 05, 2012 at 04:54 PM
+-- Generation Time: Jan 06, 2012 at 05:40 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.2-1ubuntu4.11
 
@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `ta_ims_employee` (
   PRIMARY KEY (`Employee_Code`),
   KEY `Department_Code` (`Department_Code`),
   KEY `Level_Code` (`Level_Code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `ta_ims_employee`
@@ -268,7 +268,8 @@ INSERT INTO `ta_ims_employee` (`Employee_Code`, `Employee_Name`, `Designation`, 
 (37, 'sample4', 'sample4', 4, 5, 'hhshs3@hshsh.gg', '954942c2a6801f5c9a68049f4ddfa631', '123', '1'),
 (38, 'emp', 'test', 2, 2, 'emp@emp.emp', '202cb962ac59075b964b07152d234b70', '123', '1'),
 (39, 'hod', 'test', 4, 1, 'hod@hod.hod', '202cb962ac59075b964b07152d234b70', '123', '1'),
-(40, 'acd', 'acd', 3, 1, 'acd@acd.acd', '202cb962ac59075b964b07152d234b70', '123', '1');
+(40, 'acd', 'acd', 3, 1, 'acd@acd.acd', '202cb962ac59075b964b07152d234b70', '123', '1'),
+(41, 'super', 'super', 6, 1, 'super@super.super', '202cb962ac59075b964b07152d234b70', '123', '1');
 
 -- --------------------------------------------------------
 
@@ -472,7 +473,7 @@ CREATE TABLE IF NOT EXISTS `ta_ims_item_master` (
   KEY `Type_Code` (`Type_Code`),
   KEY `Employee_Code` (`Employee_Code`),
   KEY `Image_Code` (`Image`(767))
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4371 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4372 ;
 
 --
 -- Dumping data for table `ta_ims_item_master`
@@ -4819,7 +4820,8 @@ INSERT INTO `ta_ims_item_master` (`Master_Item_Code`, `Item_Name`, `Type_Code`, 
 (4367, 'New Item 1', 2, '', '', '0', '0', NULL, NULL, 1),
 (4368, 'hjkh', 2, '', '', '0', '0', NULL, NULL, 1),
 (4369, 'hjkh', 2, '', '', '0', '0', NULL, NULL, 1),
-(4370, 'aaaaaaaaaaa', 10, '', 'bbb', '1', '2', NULL, NULL, 1);
+(4370, 'aaaaaaaaaaa', 10, '', 'bbb', '1', '2', NULL, NULL, 1),
+(4371, 'a', 8, '', 'Desc', '11', '22', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -4903,7 +4905,7 @@ CREATE TABLE IF NOT EXISTS `ta_ims_item_type` (
   KEY `Category_Code` (`Category_Code`),
   KEY `Bulk_Code` (`Bulk_Code`),
   KEY `Unit_Code` (`Unit_Code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `ta_ims_item_type`
@@ -4933,7 +4935,8 @@ INSERT INTO `ta_ims_item_type` (`Type_Code`, `Item_Type`, `Category_Code`, `Bulk
 (22, 'safa', 1, 2, 2, 'asf'),
 (24, 'abcde', 2, 1, 1, ''),
 (25, 'abcd', 25, 2, 1, ''),
-(26, 'xxxxxxxxxxxxxx', 3, 1, 1, '');
+(26, 'xxxxxxxxxxxxxx', 3, 1, 1, ''),
+(27, 'test', 16, 2, 2, 'test');
 
 -- --------------------------------------------------------
 
@@ -4946,7 +4949,7 @@ CREATE TABLE IF NOT EXISTS `ta_ims_level` (
   `Level` varchar(20) NOT NULL,
   `Description` varchar(100) NOT NULL,
   PRIMARY KEY (`Level_Code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `ta_ims_level`
@@ -4957,7 +4960,8 @@ INSERT INTO `ta_ims_level` (`Level_Code`, `Level`, `Description`) VALUES
 (2, 'Level 1', 'Employee'),
 (3, 'Level 2', 'ACD'),
 (4, 'Level 3', 'HOD'),
-(5, 'Level 4', 'Store Keeper');
+(5, 'Level 4', 'Store Keeper'),
+(6, 'Level 5', 'Super Admin');
 
 -- --------------------------------------------------------
 
@@ -5245,10 +5249,10 @@ INSERT INTO `ta_ims_po_header` (`Order_Code`, `Supplier_Code`, `Order_Date`, `Ex
 (112, 1, '2011-12-23 00:00:00', '0000-00-00 00:00:00', 'ssss', 'sss', 4, 1, 1, NULL, NULL, NULL, 1, 1.00, 2, NULL, '0', '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL),
 (113, 1, '2011-12-23 00:00:00', '0000-00-00 00:00:00', '', '', 1, 1, 1, NULL, NULL, NULL, 1, 1.00, 1, NULL, '0', '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL),
 (114, 1, '2011-12-23 00:00:00', '0000-00-00 00:00:00', '', '', 3, 1, 1, NULL, NULL, NULL, 1, 1.00, 2, NULL, '0', '0', '0', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL),
-(115, 1, '2011-12-27 00:00:00', NULL, '', '', 1, 1, 1, NULL, NULL, NULL, 1, 1.00, 4, NULL, '                            ', '                            ', '                         \n                 \n          ', NULL, NULL, NULL, NULL, NULL, NULL, 0, 2),
+(115, 1, '2011-12-27 00:00:00', NULL, '', '', 1, 1, 1, NULL, NULL, NULL, 1, 1.00, 4, NULL, '                                          ', '                                          ', '                                  \n                 \n                 \n          ', NULL, NULL, NULL, NULL, NULL, NULL, 0, 2),
 (116, 2, '2011-12-27 00:00:00', NULL, 'sss', 'att', 3, 1, 1, NULL, NULL, NULL, 2, 110.00, 4, NULL, '                             ggjnd nfnnf  fnnfnnf             ', 'jfhhfhhfffd                                          ', '                                  \n                 jajjAMKSKMKM M\n                 \n          ', NULL, NULL, NULL, NULL, NULL, NULL, 0, 1),
 (117, 2, '2011-12-27 00:00:00', NULL, '', '', 1, 1, 1, NULL, NULL, NULL, 2, 110.00, 4, NULL, '                            ', '                            ', '                         \n                 \n          ', NULL, NULL, NULL, NULL, NULL, NULL, 0, 2),
-(118, 2, '2011-12-27 00:00:00', NULL, '', '', 1, 1, 1, NULL, NULL, NULL, 2, 110.00, 4, NULL, '                                                                      ', '                                                                      ', '                                                    \n                 \n                 \n                 \n                 \n          ', NULL, NULL, NULL, NULL, NULL, NULL, 0, 2),
+(118, 2, '2011-12-27 00:00:00', NULL, '', '', 1, 1, 1, NULL, NULL, NULL, 2, 110.00, 4, NULL, '                                                                                    ', '                                                                                    ', '                                                             \n                 \n                 \n                 \n                 \n                 \n          ', NULL, NULL, NULL, NULL, NULL, NULL, 0, 5),
 (119, 2, '2011-12-27 00:00:00', NULL, '', '', 1, 1, 1, NULL, NULL, NULL, 2, 110.00, 4, NULL, '              ', '              ', '                \n          ', NULL, NULL, NULL, NULL, NULL, NULL, 0, 6),
 (120, 1, '2011-12-27 00:00:00', NULL, '', '', 1, 1, 1, NULL, NULL, NULL, 1, 1.00, 1, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 0, 2),
 (121, 2, '2011-12-27 00:00:00', NULL, '', '', 1, 1, 1, NULL, NULL, NULL, 1, 1.00, 1, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 0, 1),
@@ -5332,7 +5336,7 @@ CREATE TABLE IF NOT EXISTS `ta_ims_po_status_update` (
   KEY `Status_Code` (`Status_Code`),
   KEY `Order_Code` (`Order_Code`),
   KEY `Employee_Code` (`Employee_Code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `ta_ims_po_status_update`
@@ -5349,7 +5353,9 @@ INSERT INTO `ta_ims_po_status_update` (`Status_Update_Code`, `Order_Code`, `Stat
 (12, 118, 7, 40, '2012-01-05 16:38:20', ' rejected by ACD'),
 (13, 118, 4, 39, '2012-01-05 16:40:22', ' po approved by HOD'),
 (14, 118, 8, 40, '2012-01-05 16:41:17', ' returned order by ACD'),
-(15, 115, 5, 39, '2012-01-05 16:42:24', ' return by HOD');
+(15, 115, 5, 39, '2012-01-05 16:42:24', ' return by HOD'),
+(16, 118, 5, 39, '2012-01-05 17:41:05', 'returned by HOD abs@abs.net'),
+(17, 115, 3, 39, '2012-01-06 09:38:40', ' po rejected');
 
 -- --------------------------------------------------------
 
@@ -5384,7 +5390,7 @@ CREATE TABLE IF NOT EXISTS `ta_ims_privilege` (
   `Description` varchar(1000) NOT NULL,
   PRIMARY KEY (`Privilege_Code`),
   KEY `Privilege_Master_Code` (`Privilege_Master_Code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `ta_ims_privilege`
@@ -5405,7 +5411,8 @@ INSERT INTO `ta_ims_privilege` (`Privilege_Code`, `Privilege_Master_Code`, `Priv
 (12, 2, 'view all department PO requests by ACD', 'view all department PO requests by ACD'),
 (13, 2, 'Edit PO requests by ACD', 'Edit PO requests by ACD'),
 (14, 2, 'return PO request by HOD', 'return PO request by HOD'),
-(15, 2, 'return PO request by ACD', 'return PO request by ACD');
+(15, 2, 'return PO request by ACD', 'return PO request by ACD'),
+(16, 4, 'Administrate Priviledges', '');
 
 -- --------------------------------------------------------
 
@@ -5418,7 +5425,7 @@ CREATE TABLE IF NOT EXISTS `ta_ims_privilege_master` (
   `Master_Privilege` varchar(100) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   PRIMARY KEY (`Privilege_Master_Code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `ta_ims_privilege_master`
@@ -5427,7 +5434,8 @@ CREATE TABLE IF NOT EXISTS `ta_ims_privilege_master` (
 INSERT INTO `ta_ims_privilege_master` (`Privilege_Master_Code`, `Master_Privilege`, `Description`) VALUES
 (1, 'Add to Item Master', 'Add Items to Item Master Tabele'),
 (2, 'Create PO', 'Process PO'),
-(3, 'Administrate Employees', 'Adding new Employees , Editing ,Deleting  and Searching existing employees');
+(3, 'Administrate Employees', 'Adding new Employees , Editing ,Deleting  and Searching existing employees'),
+(4, 'Administrate Priviledges', 'Assign, Change Priviledges for Different Levels');
 
 -- --------------------------------------------------------
 
@@ -5437,12 +5445,12 @@ INSERT INTO `ta_ims_privilege_master` (`Privilege_Master_Code`, `Master_Privileg
 
 CREATE TABLE IF NOT EXISTS `ta_ims_property` (
   `Property_Code` int(11) NOT NULL AUTO_INCREMENT,
-  `Type_Code` int(11) NOT NULL,
-  `Property` varchar(100) NOT NULL,
-  `Property_Description` varchar(1000) NOT NULL,
+  `Type_Code` int(11) DEFAULT NULL,
+  `Property` varchar(100) DEFAULT NULL,
+  `Property_Description` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`Property_Code`),
   KEY `Type_Code` (`Type_Code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18446744073709551615 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `ta_ims_property`
@@ -5465,7 +5473,11 @@ INSERT INTO `ta_ims_property` (`Property_Code`, `Type_Code`, `Property`, `Proper
 (14, 15, 'Color', 'Color'),
 (15, 15, 'Brand', 'Brand'),
 (16, 15, 'Horse Power', 'Horse Power'),
-(19, 10, 'Types', 'fasf');
+(19, 10, 'Types', 'fasf'),
+(20, 4, 'vhbv', 'bnvnvn'),
+(21, 2, 'typefchf', 'mklm'),
+(22, 2, 'typea', 'mklm'),
+(23, 2, 'Types', '');
 
 -- --------------------------------------------------------
 
