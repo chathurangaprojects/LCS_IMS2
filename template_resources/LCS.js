@@ -1789,8 +1789,7 @@ function retrieve_priviledges(){
             data: "departmentCode="+departmentCode+"&levelCode="+levelCode,
             success: function(msg)
             {
-                $('#accordion').html(msg);
-
+              $('#accordion').html(msg);
             }//success
         });//ajax
 
@@ -1799,3 +1798,39 @@ function retrieve_priviledges(){
 
 }//retrieve_priviledges
 
+
+
+
+
+/*
+function testLoad(){
+	
+
+	$('#chathuranga').html('<div id="accordion" class="ui-accordion ui-widget ui-helper-reset ui-accordion-icons" role="tablist"><h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a href="#" tabindex="-1">samp</a> </h3><div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 300px; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">ddadda  ahhaha  ahhaha  ahhahha</div><h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a href="#" tabindex="-1">samp</a></h3><div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 300px; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">ddadda  ahhaha  ahhaha  ahhahha</div><div>');
+	
+}
+
+*/
+
+function testLoad(){
+    var departmentCode = $('#Department_Code').val();
+    var levelCode = $('#Level_Code').val();
+
+
+    if(departmentCode!="" && levelCode!=""){
+
+        //retieving the priviledges
+
+        $.ajax({
+            type: "POST",
+            url: base_url+'index.php/Priviledge/PriviledgeAdministration/departmentLevelPriviledges',
+            data: "departmentCode="+departmentCode+"&levelCode="+levelCode,
+            success: function(msg)
+            {
+              $('#chathuranga').html(msg);
+            }//success
+        });//ajax
+
+
+    }//if
+}

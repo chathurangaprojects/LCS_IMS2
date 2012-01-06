@@ -13,7 +13,7 @@
 
 
         <b> Select Department </b>
-        <select tabindex="3" class="field select small" id="Department_Code" name="Department_Code" onchange="retrieve_priviledges()">
+        <select tabindex="3" class="field select small" id="Department_Code" name="Department_Code" onchange="testLoad();jQuery('#accordion').accordion();">
             <option value="">Please select</option>
             <?php
 
@@ -36,7 +36,7 @@
 
 
         <b>Select Level</b>
-        <select tabindex="3" class="field select small" id="Level_Code" name="Level_Code" onchange="retrieve_priviledges()">
+        <select tabindex="3" class="field select small" id="Level_Code" name="Level_Code" onchange="testLoad();jQuery('#accordion').accordion();">
             <option value="">Please select</option>
             <?php
 
@@ -62,48 +62,51 @@
     </div>
 
 
-    <div id="accordion" class="ui-accordion ui-widget ui-helper-reset ui-accordion-icons" role="tablist">
+   <?php /*?> <div id="accordion1" class="ui-accordion ui-widget ui-helper-reset ui-accordion-icons" role="tablist">
 
-        <!--        --><?php
-//
-//        for($index=0;$index<sizeof($priviledgeDataArray);$index++){
-//
-//            $MasterAndSubPriviledgeModel = $priviledgeDataArray[$index];
-//
-//            $masterPriviledgeModel = $MasterAndSubPriviledgeModel->getMasterPriviledge();
-//
-//            //$subPriviledgeModel contains an array
-//            $subPriviledgeModel =  $MasterAndSubPriviledgeModel->getSubPriviledge();
-//
-//            ?>
-        <!---->
-        <!---->
-        <!--            <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-1">-->
-        <!--                <span class="ui-icon ui-icon-triangle-1-e"></span>-->
-        <!---->
-        <!--                <a href="#" tabindex="-1"> --><?php //echo $masterPriviledgeModel->getMaster_Privilege(); ?><!-- </a>-->
-        <!--            </h3>-->
-        <!---->
-        <!--            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 300px; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">-->
-        <!---->
-        <!--                --><?php
-//                //display the sub priviledges
-//                for($ind=0;sizeof($subPriviledgeModel)>$ind;$ind++){
-//
-//                    echo $subPriviledgeModel[$ind]->getPrivilege()."<br/>";
-//
-//                }
-//                ?>
-        <!--            </div>-->
-        <!---->
-        <!--            --><?php
-//        }//for
-//        ?>
+                <?php
+
+        for($index=0;$index<sizeof($priviledgeDataArray);$index++){
+
+            $MasterAndSubPriviledgeModel = $priviledgeDataArray[$index];
+
+            $masterPriviledgeModel = $MasterAndSubPriviledgeModel->getMasterPriviledge();
+
+            //$subPriviledgeModel contains an array
+            $subPriviledgeModel =  $MasterAndSubPriviledgeModel->getSubPriviledge();
+
+            ?>
+        
+        
+                    <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-1">
+                        <span class="ui-icon ui-icon-triangle-1-e"></span>
+        
+                        <a href="#" tabindex="-1"> <?php echo $masterPriviledgeModel->getMaster_Privilege(); ?> </a>
+                    </h3>
+        
+                    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 300px; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">
+        
+                        <?php
+                //display the sub priviledges
+                for($ind=0;sizeof($subPriviledgeModel)>$ind;$ind++){
+
+                    echo $subPriviledgeModel[$ind]->getPrivilege()."<br/>";
+
+                }
+                ?>
+                    </div>
+        
+                    <?php
+        }//for
+        ?>
+
+
+</div>
+<?php */?>
 
 
 
-    </div>
-
+<div id="chathuranga">
 
 
 </div>

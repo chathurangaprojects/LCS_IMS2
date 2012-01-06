@@ -203,8 +203,7 @@ class PriviledgeAdministration extends CI_Controller
                 //start
 
 
-
-                $string='';
+                $string='<div id="accordion" class="ui-accordion ui-widget ui-helper-reset ui-accordion-icons" role="tablist">';
 
                 for($index=0;$index<sizeof($priviledgeDataArray);$index++){
 
@@ -215,13 +214,37 @@ class PriviledgeAdministration extends CI_Controller
                     //$subPriviledgeModel contains an array
                     $subPriviledgeModel =  $MasterAndSubPriviledgeModel->getSubPriviledge();
 
-
-
-
                     $string=$string.'<h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-1">
             <span class="ui-icon ui-icon-triangle-1-e"></span>
 
-            <a href="#" tabindex="-1">'.$masterPriviledgeModel->getMaster_Privilege().'</a>
+            <a href="#" tabindex="-1" onclick="$(function() {
+        $(\'#accordion\').accordion({});});" >'.$masterPriviledgeModel->getMaster_Privilege().'</a>
+        </h3>
+
+        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 300px; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">';
+
+
+                    //display the sub priviledges
+                    for($ind=0;sizeof($subPriviledgeModel)>$ind;$ind++){
+
+                        $string=$string.$subPriviledgeModel[$ind]->getPrivilege();
+
+                    }
+
+                    $string = $string.'</div>';
+
+
+                }//for
+
+
+                echo $string.'<div/>';
+				
+
+/*
+$string='<h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-1">
+            <span class="ui-icon ui-icon-triangle-1-e"></span>
+
+            <a href="#" tabindex="-1">sample</a>
         </h3>
 
         <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 300px; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">';
@@ -235,15 +258,46 @@ class PriviledgeAdministration extends CI_Controller
                     }
 
                     $string = $string.'</div>';
-
-
-                }//for
-
-
-                echo $string;
-
+					
+				
+					
                 //ends
 
+
+/*
+$string='<div id="accordion" class="ui-accordion ui-widget ui-helper-reset ui-accordion-icons" role="tablist"> 
+<h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-1">
+            <span class="ui-icon ui-icon-triangle-1-e"></span>
+
+            <a href="#" tabindex="-1" onclick="$(function() {
+        $(\'#accordion\').accordion({
+        });
+    });">samp</a>
+        </h3>
+
+        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 300px; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">  
+		
+		lankaCom services
+		</div>
+		
+		
+		<h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" aria-selected="false" tabindex="-1">
+            <span class="ui-icon ui-icon-triangle-1-e"></span>
+
+            <a href="#" tabindex="-1">samp</a>
+        </h3>
+
+        <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="height: 300px; overflow: auto; padding-top: 11.2px; padding-bottom: 11.2px;" role="tabpanel">  
+		
+		chathuranga tennakoon
+		
+		</div></div>
+		
+		
+		';
+					
+*/					
+			echo $string;	
 
 
             }
