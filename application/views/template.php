@@ -150,6 +150,20 @@ else if($isAdminDirector){
 </ul>
 </li>
 
+    <!-- Priviledges starts -->
+
+    <li>
+        <a class="sf-with-ul" style="cursor: pointer;">Privileges</a>
+
+        <ul>
+            <li>
+                <a href="<?php echo base_url(); ?>index.php/Priviledge/PriviledgeAdministration/changeLevelPriviledges" class="sf-with-ul">Change Privileges</a>
+            </li>
+
+        </ul>
+    </li>
+
+    <!-- priviledges ends -->
 
 <li>
 <a class="sf-with-ul" style="cursor: pointer;">Employees</a>

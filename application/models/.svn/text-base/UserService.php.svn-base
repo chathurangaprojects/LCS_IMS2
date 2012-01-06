@@ -432,6 +432,31 @@ class UserService extends CI_Model {
 	  }
 	  
   }//function
+
+
+
+
+
+
+
+    function isSuperAdministrator($empID){
+
+
+        $query = $this->db->get_where('ta_ims_employee', array('Level_Code' =>'6','Employee_Code'=>$empID));
+
+        if($query->num_rows()>0){
+
+            return TRUE;
+
+        }
+        else{
+
+            return FALSE;
+
+        }
+
+    }//function
+
   
   
   
